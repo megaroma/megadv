@@ -4,15 +4,13 @@ abstract  class class_model
 {
 
 public $route;
-public $data;
 public $mod = array();
 private $reg_ivent = array();
 private $bind_ivent = array();
 private $input = array(); 
 
-public function __construct($route,$modules,$out_data)
+public function __construct($route,$modules)
 {
-$this->data = $out_data;
 $this->mod = $modules;
 $this->route = $route;
 

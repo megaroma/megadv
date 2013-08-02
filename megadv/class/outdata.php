@@ -21,7 +21,27 @@ public function &get_data()
  return $this->data;
  }
 
+public function set_js($name,$path = "")
+{
+if ($path == "")
+ {
+ $this->set_block_vars('JS', array('name' =>  'megadv/js/'.$name));
+ } else 
+ {
+ $this->set_block_vars('JS', array('name' =>  $path.$name));
+ }
 }
+ 
+public function get_var($varname)
+{
+return $this->data['.'][0][$varname];
+} 
+ 
+ 
+}
+
+
+
 
 
 ?>

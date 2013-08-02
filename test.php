@@ -115,8 +115,11 @@ echo $out_data->data['.']['0']["test"];
 
 $t = new class_templ($out_data);
 
-$t->set_filename("main","test.htm");
+$out_data->set_js("jquery-1.7.2.min.js");
 
+$t->set_filename("main","test.htm");
+$t->set_filename("head","html/head.htm");
+$t->show("head");
 $t->show("main");
 
 

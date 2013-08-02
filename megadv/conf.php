@@ -6,10 +6,10 @@ class conf
 {
 // DB 
 public static $db_type = 'mysql';
-public static $db_login = 'pod12345_it';
-public static $db_pass = 'pricebase';
+public static $db_login = 'root';
+public static $db_pass = '';
 public static $db_host = 'localhost';
-public static $db_name = 'pod12345_resourses';
+public static $db_name = 'megasys';
 
 //LOG
 public static $debug = true;
