@@ -40,6 +40,10 @@ $mod = $router->get_mod();
 $mod->run();
 
 
+$view = new class_view();
+
+$view->render($out_data);
+/*
 $t_typ = $out_data->get_typ();
 if ($t_typ == 'html')
 {
@@ -58,4 +62,5 @@ echo $outd;
 exit;
 }
 
+*/
 ?>

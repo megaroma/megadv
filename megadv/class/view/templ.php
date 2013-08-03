@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class class_templ
+class class_view_templ
 {
 private $buf = array();
 public $data = array();
