@@ -2,6 +2,8 @@
 if (!defined('MEGADV')) die ('401 page not found');
 class class_outdata
 {
+public $out_typ = 'html';
+public $template;
 public $data = array();
 
 public function set_var($varname, $varval)
@@ -37,6 +39,26 @@ public function get_var($varname)
 return $this->data['.'][0][$varname];
 } 
  
+
+public function set_output($typ,$shabl)
+{
+if ($typ == 'ajax') $this->out_typ = "ajax";
+if ($typ == 'html') $this->out_typ = "html";
+
+$this->template = $shabl;
+
+}
+
+public function get_tname()
+{
+return $this->template;
+
+}
+
+public function get_typ()
+{
+return  $this->out_typ;
+}
  
 }
 

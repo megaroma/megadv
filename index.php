@@ -40,9 +40,22 @@ $mod = $router->get_mod();
 $mod->run();
 
 
-$t = new class_templ($out_data);
-$t->set_filename("page","html/".$out_data->get_var("template"));
-$t->show("page");
+$t_typ = $out_data->get_typ();
+if ($t_typ == 'html')
+{
 
+$t = new class_templ($out_data);
+$t->set_filename("page","html/".$out_data->get_tname());
+$t->show("page");
+}
+
+if ($t_typ == 'ajax')
+{
+$tname = $out_data->get_tname();
+$buf = $out_data->data[$tname][0];
+$outd = json_encode($buf);
+echo $outd;
+exit;
+}
 
 ?>
