@@ -57,13 +57,14 @@ foreach ($buf as $dt)
  if($dt['typ'] == 'session') $input_data[$ivent]['session'][$dt['name']] = $_SESSION[$dt['name']];
  if($dt['typ'] == 'route') 
     {
-	$rr = explode("/", $this->route,4);
+	$rr = explode("/", $this->route,2);
 	if ($dt['name'] == $rr[0])
 	 {
-	 $input_data[$ivent]['route'][$dt['name']] = $rr[0];
+	 $input_data[$ivent]['route'] = $rr[1];
+	 $ivents[$ivent]['stat'] = true;
 	 } else
 	 {
-	 $input_data[$ivent]['route'][$dt['name']] = "";
+	 $input_data[$ivent]['route'] = "";
 	 }
 	
 	}
@@ -74,7 +75,7 @@ foreach ($buf as $dt)
 		if ( $input_data[$ivent][$dt['typ']][$dt['name']] <> "") 
 		 { $ivents[$ivent]['stat'] = true; }
 		 else
-		 { $ivents[$ivent]['stat'] = false; }
+		 { if ($dt['typ'] <> 'route') $ivents[$ivent]['stat'] = false; }
 		
 		}
  }

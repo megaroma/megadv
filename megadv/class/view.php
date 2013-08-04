@@ -15,7 +15,7 @@ public function render($data)
 $t_typ = $data->get_typ();
 if ($t_typ == 'html')
 {
-$t = new class_view_templ($data);
+$t = new class_view_html($data);
 $t->set_filename("page","html/".$data->get_tname());
 $t->show("page");
 
@@ -24,8 +24,9 @@ $t->show("page");
 if ($t_typ == 'ajax')
 {
 
-
-
+$t = new class_view_json($data);
+$t->set_filename("page",$data->get_tname());
+$t->show("page");
 
 }
 

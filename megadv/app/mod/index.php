@@ -11,6 +11,9 @@ $this->reg('test_r','route','ajax',1);
 $this->bind('test_r','test_ajax',1);
 
 
+$this->reg('test_r2','route','test',1);
+$this->bind('test_r2','test_route',1);
+
 }
 public  function start()
 {}
@@ -53,6 +56,14 @@ $data->set_block_vars("ajaxdata",array(
 $data->set_output("ajax","ajaxdata");
 }
 
+
+
+public function test_route($in)
+{
+
+echo $in['route'];
+exit;
+}
 
 
 }

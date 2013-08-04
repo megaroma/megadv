@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class class_view_templ
+class class_view_html
 {
 private $buf = array();
 public $data = array();
@@ -29,7 +29,7 @@ public function set_filename($handle,$filename)
 private function loadfile($handle)
   {  
    $filename = $this->files[$handle];
-   $this->buf[$handle] = implode("", @file($filename));;
+   $this->buf[$handle] = implode("", @file($filename));
    return true;
    }  
 
