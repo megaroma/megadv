@@ -83,20 +83,20 @@ private function compile($handle)
    {
    $this->buf[$handle] = ' '.$this->buf[$handle];
    #Вставки
+   while (strpos($this->buf[$handle],'<!-- INCLUDE'))
+   {	 
+   $this->buf[$handle]=preg_replace_callback('/<!-- INCLUDE (\S+) -->/m',  
+                                        array($this,'s_include'),
+										$this->buf[$handle]);
+   }
+/*   #Вставки уровень 2 - вставки в вставках
    if (strpos($this->buf[$handle],'<!-- INCLUDE'))
    {	 
    $this->buf[$handle]=preg_replace_callback('/<!-- INCLUDE (\S+) -->/m',  
                                         array($this,'s_include'),
 										$this->buf[$handle]);
    }
-   #Вставки уровень 2 - вставки в вставках
-   if (strpos($this->buf[$handle],'<!-- INCLUDE'))
-   {	 
-   $this->buf[$handle]=preg_replace_callback('/<!-- INCLUDE (\S+) -->/m',  
-                                        array($this,'s_include'),
-										$this->buf[$handle]);
-   }
-
+*/
    
    #Простые переменные
    $this->buf[$handle]=preg_replace_callback('/{([^}.\n]+)}/m',
