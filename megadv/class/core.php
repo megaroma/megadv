@@ -29,6 +29,33 @@ if (array_key_exists($name, $this->s_modules))
 }
 
 
+public function load_mod($name)
+{
+ if(file_exists( "megadv/modules/".$name."/conf.php")) 
+  {
+  conf::load("megadv/modules/".$name."/conf.php");
+  } else 
+  { //файл конфигурации обязателен
+  return false;
+  }
+if(file_exists( "megadv/modules/".$name."/body.php")) 
+  {
+  $class_name = "modules_".$name."_body";
+  $module = call_user_func(array ($class_name,"getInstance"),$this);
+  
+  
+  } else 
+  {
+  return false;
+  }
+if(file_exists( "megadv/modules/".$name."/init.php")) 
+  {
+  include "megadv/modules/".$name."/init.php";
+  }
+ 
+return $this->reg($name, $module); 
+}
+
 
 }
 

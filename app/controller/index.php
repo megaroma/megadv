@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class app_mod_index extends class_model
+class app_controller_index extends class_controller
 
 {
 
@@ -20,9 +20,27 @@ public  function start()
 public  function main()
 {
 $data = $this->mod->get("out_data");
+$test = $this->mod->get("test");
+$db = $this->mod->get("db");
+$error = $this->mod->get("error");
 
 
-$data->set_var("mega","mega!!!!!");
+try
+{
+$p[':mega'] = "666";
+$res = $db->sql_query("select now() as dt, :mega as num from dual",$p);
+$row =  $db->sql_fetchrow($res);
+
+
+} catch (Exception $e)
+{
+ $error->run($e);
+}
+
+
+$buf = $test->run();
+
+$data->set_var("mega","mega!!!$buf!!".$row['dt']."-".$row['num']."-");
 
 
 $data->set_var("title","index page");

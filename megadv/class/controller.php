@@ -1,17 +1,17 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-abstract  class class_model
+abstract  class class_controller
 {
 
 public $route;
-public $mod = array();
+public $mod;
 private $reg_ivent = array();
 private $bind_ivent = array();
 private $input = array(); 
 
-public function __construct($route,$modules)
+public function __construct($route,$core)
 {
-$this->mod = $modules;
+$this->mod = $core;
 $this->route = $route;
 
 }

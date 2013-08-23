@@ -1,17 +1,23 @@
 <?
 define('MEGADV', true);
-include ("megadv/conf.php");
+include ("megadv/init.php");
+
+
+
 
 
 //init s_modules
-$db = class_db::getInstance(conf::$db_type);
-$error = class_error::getInstance();
+//$db = class_db::getInstance(conf::get("db_type"));
+//$error = class_error::getInstance();
 $out_data = new class_outdata();
-
+$core = new class_core();
+$core->load_mod("error");
+$core->load_mod("db");
+//$error = $core->get("error");
 $out_data->set_js("jquery-1.7.2.min.js");
-try
+/*try
 {
- $db->sql_connect(conf::$db_host, conf::$db_login, conf::$db_pass, conf::$db_name);
+ $db->sql_connect(conf::get("db_host"), conf::get("db_login"), conf::get("db_pass"), conf::get("db_name"));
  $sql="SET CHARACTER SET cp1251";
  $db->sql_query($sql);
  $sql="SET NAMES cp1251";
@@ -26,18 +32,19 @@ try
 }
 
 //init core
-$core = new class_core();
-$core->reg('db',$db);
-$core->reg('error',$error);
-$core->reg('out_data',$out_data);
 
+$core->reg('db',$db);
+*/
+//$core->reg('error',$error);
+$core->reg('out_data',$out_data);
+$core->load_mod("test");
 
 $route = $_GET["route"];
 $router = new class_router($route,$core);
 
-$mod = $router->get_mod();
+$controller = $router->get_controller();
 
-$mod->run();
+$controller->run();
 
 
 $view = new class_view();

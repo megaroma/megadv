@@ -1,7 +1,8 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class class_db_mysql extends class_db 
+class modules_db_class_mysql extends modules_db_body
 {
+
 
 public function sql_server_info()
 {
@@ -31,8 +32,11 @@ public function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port
  }
 
 
-public function sql_query($query)
+public function sql_query($query,$param = array())
 	{ 
+	$values = array_map(array ($this,"quote"), $param);
+
+   $query = strtr($query, $values);
 	$this->query_result='';
 		if ($query != '')
 		{
@@ -125,12 +129,20 @@ public function sql_close()
    return @mysql_close($this->db_connect_id);
    }	
  
+
+public function escape($value)
+	{
+	
+	$value = mysql_real_escape_string( (string) $value);
+		return "'$value'";
+	}
+ 
+ 
+ 
  
  
  
 }
-
-
 
 
 ?>

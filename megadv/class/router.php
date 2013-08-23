@@ -3,25 +3,25 @@ if (!defined('MEGADV')) die ('401 page not found');
 class class_router
 {
 private $route;
-private $s_mods;
-public function __construct($r,$m)
+private $core;
+public function __construct($r,$core)
  {
  $this->route = $r;
- $this->s_mods = $m;
+ $this->core = $core;
  }
 
-public function get_mod()
+public function get_controller()
  {
  $m = explode("/", $this->route,2);
- if ($m[0] == '') return new app_mod_index($m[1],$this->s_mods);
+ if ($m[0] == '') return new app_controller_index($m[1],$this->core);
  
- if(file_exists( "app/mod/".$m[0].".php")) 
+ if(file_exists( "app/controller/".$m[0].".php")) 
   {
-  $mod_name = "app_mod_".$m[0];
-  return new $mod_name($m[1],$this->s_mods);
+  $mod_name = "app_controller_".$m[0];
+  return new $mod_name($m[1],$this->core);
   } else
   {
-  return new app_mod_index($m[1],$this->s_mods);
+  return new app_controller_index($m[1],$this->core);
   }
  
  }

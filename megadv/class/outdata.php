@@ -27,7 +27,7 @@ public function set_js($name,$path = "")
 {
 if ($path == "")
  {
- $this->set_block_vars('JS', array('name' =>  'megadv/js/'.$name));
+ $this->set_block_vars('JS', array('name' =>  'public/js/'.$name));
  } else 
  {
  $this->set_block_vars('JS', array('name' =>  $path.$name));
