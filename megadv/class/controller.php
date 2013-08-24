@@ -4,14 +4,12 @@ abstract  class class_controller
 {
 
 public $route;
-public $mod;
 private $reg_ivent = array();
 private $bind_ivent = array();
 private $input = array(); 
 
-public function __construct($route,$core)
+public function __construct($route)
 {
-$this->mod = $core;
 $this->route = $route;
 
 }

@@ -2,24 +2,24 @@
 if (!defined('MEGADV')) die ('401 page not found');
 abstract class modules_error_body
 {
-public $core;
 
-public static function getInstance($core)
+
+public static function getInstance()
     {
 	if (conf::get("debug"))
        {
-	   return new modules_error_class_debug($core);
+	   return new modules_error_class_debug();
 	   } else
 	   {
-	   return new modules_error_class_work($core);
+	   return new modules_error_class_work();
 	   }
 	}
 
 
 	
-public function __construct($core)
+public function __construct()
  {
- $this->core = $core;
+ 
  }
 	
 abstract function run(Exception  $e);

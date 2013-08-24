@@ -2,23 +2,23 @@
 if (!defined('MEGADV')) die ('401 page not found');
 abstract class modules_db_body
 {
-public $core;
+
 
 private $db_connect_id;
 private $query_result='';
 private $affected_rows=0;
 
-public static function getInstance($core)
+public static function getInstance()
     {
 	 $db_typ = conf::get("db_type");
      $class_name = 'modules_db_class_'.$db_typ;
-	   return new  $class_name($core);
+	   return new  $class_name();
 	  
 	}
 
-public function __construct($core)
+public function __construct()
  {
- $this->core = $core;
+ 
  }
  
 abstract function sql_server_info();

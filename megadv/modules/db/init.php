@@ -1,9 +1,9 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
 //инициализация модуля , объект находится в $module
-//действо происходит внутри core, обращение к методам кор через this
+//действо происходит внутри core, обращение к методам кор через self
 
-$error = $this->get("error");
+$error = self::get("error");
 
 try
 {

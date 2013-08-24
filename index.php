@@ -10,9 +10,10 @@ include ("megadv/init.php");
 //$db = class_db::getInstance(conf::get("db_type"));
 //$error = class_error::getInstance();
 $out_data = new class_outdata();
-$core = new class_core();
-$core->load_mod("error");
-$core->load_mod("db");
+//$core = new class_core();
+core::load_mod("error");
+core::load_mod("db");
+
 //$error = $core->get("error");
 $out_data->set_js("jquery-1.7.2.min.js");
 /*try
@@ -36,11 +37,11 @@ $out_data->set_js("jquery-1.7.2.min.js");
 $core->reg('db',$db);
 */
 //$core->reg('error',$error);
-$core->reg('out_data',$out_data);
-$core->load_mod("test");
+core::reg('out_data',$out_data);
+core::load_mod("test");
 
 $route = $_GET["route"];
-$router = new class_router($route,$core);
+$router = new class_router($route);
 
 $controller = $router->get_controller();
 

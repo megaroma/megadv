@@ -19,10 +19,10 @@ public  function start()
 {}
 public  function main()
 {
-$data = $this->mod->get("out_data");
-$test = $this->mod->get("test");
-$db = $this->mod->get("db");
-$error = $this->mod->get("error");
+$data = core::get("out_data");
+$test = core::get("test");
+$db = core::get("db");
+$error = core::get("error");
 
 
 try
@@ -40,7 +40,9 @@ $row =  $db->sql_fetchrow($res);
 
 $buf = $test->run();
 
-$data->set_var("mega","mega!!!$buf!!".$row['dt']."-".$row['num']."-");
+$model = new app_model_main();
+$t = $model->test();
+$data->set_var("mega","mega!!!$buf!!".$row['dt']."-".$row['num']."-".$t);
 
 
 $data->set_var("title","index page");
@@ -62,7 +64,7 @@ public  function end()
 public function test_ajax($in)
 
 {
-$data = $this->mod->get("out_data");
+$data = core::get("out_data");
 
 $data->set_block_vars("ajaxdata",array(
 'id' => 13,
