@@ -21,7 +21,7 @@ public function __construct()
  
  }
  
-abstract function sql_server_info();
+
 abstract function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port = false);
 abstract function sql_query($query,$param = array());
 abstract function sql_transaction($status = 'begin');

@@ -4,16 +4,6 @@ class modules_db_class_mysql extends modules_db_body
 {
 
 
-public function sql_server_info()
-{
-if (!($result = @mysql_query('SELECT VERSION() AS version', $this->db_connect_id)))
-    throw new Exception ( 'Ошибка в модуле class_db_mysql, метод sql_server_info, функция mysql_query: получение версии базы',11); 
-if	(!($row = @mysql_fetch_assoc($result)))
-    throw new Exception ( 'Ошибка в модуле class_db_mysql, метод sql_server_info, функция mysql_fetch_assoc',12); 
-	@mysql_free_result($result);
-	return $row['version'];
-	
-}
 
 public function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port = false)
  {
@@ -22,12 +12,7 @@ public function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port
   throw new Exception ( 'Ошибка в модуле class_db_mysql, метод sql_connect, функция mysql_connect',13);
  if (!(@mysql_select_db($database, $this->db_connect_id)))
   throw new Exception ( 'Ошибка в модуле class_db_mysql, метод sql_connect, функция mysql_select_db',14);
- if (version_compare($this->sql_server_info(), '4.1.0', '>='))
-				{
-					@mysql_query("SET NAMES 'utf8'", $this->db_connect_id);
-                    @mysql_query("set character_set_connection=utf8", $this->db_connect_id);
-                    @mysql_query("set names utf8", $this->db_connect_id);
-				}
+
  
  }
 

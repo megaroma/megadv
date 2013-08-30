@@ -34,7 +34,7 @@ $row =  $db->sql_fetchrow($res);
 
 } catch (Exception $e)
 {
- $error->run($e);
+ $error->run($e,__FILE__,28); //номер строчки try
 }
 
 
@@ -42,7 +42,7 @@ $buf = $test->run();
 
 $model = new app_model_main();
 $t = $model->test();
-$data->set_var("mega","mega!!!$buf!!".$row['dt']."-".$row['num']."-".$t);
+$data->set_var("mega","mega!!!$buf!!".$row['dt']."-".$row['num']."-".$t."<br>".__FILE__);
 
 
 $data->set_var("title","index page");

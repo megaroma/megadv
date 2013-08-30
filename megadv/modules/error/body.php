@@ -22,7 +22,7 @@ public function __construct()
  
  }
 	
-abstract function run(Exception  $e);
+abstract function run(Exception  $e,$file,$num);
 
 }
 
