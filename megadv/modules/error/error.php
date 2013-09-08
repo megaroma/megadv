@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-abstract class modules_error_body
+abstract class module_error
 {
 
 
@@ -8,10 +8,10 @@ public static function getInstance()
     {
 	if (conf::get("debug"))
        {
-	   return new modules_error_class_debug();
+	   return new module_error_debug();
 	   } else
 	   {
-	   return new modules_error_class_work();
+	   return new module_error_work();
 	   }
 	}
 

@@ -1,11 +1,11 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class modules_db_class_mysql extends modules_db_body
+class module_db_mysql extends module_db
 {
 
 
 
-public function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port = false)
+public function connect($sqlserver, $sqluser, $sqlpassword, $database, $port = false)
  {
  $server = $sqlserver . (($port) ? ':' . $port : '');
  if(!($this->db_connect_id = @mysql_connect($server, $sqluser, $sqlpassword)))
@@ -17,7 +17,7 @@ public function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port
  }
 
 
-public function sql_query($query,$param = array())
+public function query($query,$param = array())
 	{ 
 	$values = array_map(array ($this,"quote"), $param);
 
@@ -31,7 +31,7 @@ public function sql_query($query,$param = array())
 	return 	$this->query_result;
 	}	
  
-public function sql_transaction($status = 'begin')
+public function transaction($status = 'begin')
 {
 		switch ($status)
 		{
@@ -52,7 +52,7 @@ public function sql_transaction($status = 'begin')
 }
  
  
- public function sql_query_limit($query, $total, $offset = 0)
+ public function query_limit($query, $total, $offset = 0)
 	{
 		if (empty($query)) throw new Exception ( 'Ошибка в модуле class_db_mysql, метод sql_query_limit, пустой query',17);	
 		
@@ -64,10 +64,10 @@ public function sql_transaction($status = 'begin')
 		}
 
 		
-		return $this->sql_query($query);
+		return $this->query($query);
 	}
 	
- public function sql_fetchrow($query_id = false)
+ public function fetchrow($query_id = false)
 	{
 		if ($query_id == false)
 		{
@@ -79,7 +79,7 @@ public function sql_transaction($status = 'begin')
 	}	
  
  
-public function sql_freeresult($query_id = false)
+public function freeresult($query_id = false)
 	{
 		if ($query_id == false)
 		{
@@ -93,7 +93,7 @@ public function sql_freeresult($query_id = false)
  
  
  
-public function sql_affected_rows()
+public function affected_rows()
 	{ 
 		
     $this->affected_rows = @mysql_affected_rows($this->db_connect_id);
@@ -105,7 +105,7 @@ public function sql_affected_rows()
  
  
  
-public function sql_close()
+public function close()
 	{
 		if (!$this->db_connect_id)
 		{

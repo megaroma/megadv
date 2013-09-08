@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class modules_error_class_work extends modules_error_body
+class module_error_work extends module_error
 {
 
 public function run(Exception  $e,$file,$num)

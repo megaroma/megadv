@@ -21,6 +21,14 @@ $t->show("page");
 
 }
 
+if ($t_typ == 'php')
+{
+$t = new class_view_php($data);
+$t->set_filename("page","html/".$data->get_tname());
+$t->show("page");
+
+}
+
 if ($t_typ == 'ajax')
 {
 

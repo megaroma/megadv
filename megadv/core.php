@@ -38,9 +38,10 @@ public static function load_mod($name)
   { //файл конфигурации обязателен
   return false;
   }
-if(file_exists( "megadv/modules/".$name."/body.php")) 
+if(file_exists( "megadv/modules/".$name."/".$name.".php")) 
   {
-  $class_name = "modules_".$name."_body";
+  $class_name = "module_".$name;
+  
   $module = call_user_func(array ($class_name,"getInstance"));
   
   
@@ -54,6 +55,13 @@ if(file_exists( "megadv/modules/".$name."/init.php"))
   }
  
 return self::reg($name, $module); 
+}
+
+
+public static function model($model_name)
+{
+$model_name = "model_".$model_name;
+return new $model_name();
 }
 
 

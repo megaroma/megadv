@@ -1,44 +1,27 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
 
-class conf
-{
-private static $prop = array();
-
-
-public static function get($name)
-{
-return self::$prop[$name];
-}
-
-public static function set($name,$value)
-{
-self::$prop[$name] = $value;
-}
-
-public static function load($filename)
-{
-$config = include($filename);
-
-foreach ($config as $k => $v)
- {
- self::set($k,$v);
- }
-
-}
-
-}
-
-conf::load("megadv/conf.php");
-
 
 function __autoload ($class_name)
 {
+
  list($pre, $tmp) = explode ("_",$class_name,2);
- if ($pre == "app")
+
+ if (($pre == "controller") || ($pre == "model"))
  {
  $path=str_replace("_", "/", $class_name);
- require_once($path.".php");
+ require_once("app/".$path.".php");
+ } elseif ($pre == "module")
+ {
+ list($pre, $class1, $class2) = explode ("_",$class_name,3);
+ if ($class2 <> '')
+  {
+    require_once("megadv/modules/{$class1}/{$class1}/{$class2}".".php");
+  } else
+  {
+    require_once("megadv/modules/{$class1}/{$class1}".".php");
+  }
+ 
  } else
  {
  $path=str_replace("_", "/", $class_name);
@@ -46,4 +29,8 @@ function __autoload ($class_name)
  } 
 }
 
+
+
+
+conf::load("app/conf/conf.php");
 ?>

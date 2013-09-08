@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-abstract class modules_db_body
+abstract class module_db
 {
 
 
@@ -11,7 +11,7 @@ private $affected_rows=0;
 public static function getInstance()
     {
 	 $db_typ = conf::get("db_type");
-     $class_name = 'modules_db_class_'.$db_typ;
+     $class_name = 'module_db_'.$db_typ;
 	   return new  $class_name();
 	  
 	}
@@ -22,14 +22,14 @@ public function __construct()
  }
  
 
-abstract function sql_connect($sqlserver, $sqluser, $sqlpassword, $database, $port = false);
-abstract function sql_query($query,$param = array());
-abstract function sql_transaction($status = 'begin');
-abstract function sql_query_limit($query, $total, $offset = 0);
-abstract function sql_fetchrow($query_id = false);
-abstract function sql_freeresult($query_id = false);
-abstract function sql_close();
-abstract function sql_affected_rows();
+abstract function connect($sqlserver, $sqluser, $sqlpassword, $database, $port = false);
+abstract function query($query,$param = array());
+abstract function transaction($status = 'begin');
+abstract function query_limit($query, $total, $offset = 0);
+abstract function fetchrow($query_id = false);
+abstract function freeresult($query_id = false);
+abstract function close();
+abstract function affected_rows();
 abstract function escape($value);
 
 public function quote($value)

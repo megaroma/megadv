@@ -33,6 +33,18 @@ if ($path == "")
  $this->set_block_vars('JS', array('name' =>  $path.$name));
  }
 }
+
+
+public function set_css($name,$path = "")
+{
+if ($path == "")
+ {
+ $this->set_block_vars('CSS', array('name' =>  'public/css/'.$name));
+ } else 
+ {
+ $this->set_block_vars('CSS', array('name' =>  $path.$name));
+ }
+}
  
 public function get_var($varname)
 {
@@ -44,6 +56,7 @@ public function set_output($typ,$shabl)
 {
 if ($typ == 'ajax') $this->out_typ = "ajax";
 if ($typ == 'html') $this->out_typ = "html";
+if ($typ == 'php') $this->out_typ = "php";
 
 $this->template = $shabl;
 

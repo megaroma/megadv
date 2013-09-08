@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-abstract class modules_test_body
+abstract class module_test
 {
 
 
@@ -8,10 +8,10 @@ public static function getInstance()
     {
 	if (conf::get("test_typ") == 'test1')
        {
-	   return new modules_test_class_test1();
+	   return new module_test_test1();
 	   } else
 	   {
-	   return new  modules_test_class_test1();
+	   return new  module_test_test1();
 	   }
 
 	}

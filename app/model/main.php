@@ -1,7 +1,7 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
 
-class app_model_main extends class_model
+class model_main extends class_model
 
 {
 

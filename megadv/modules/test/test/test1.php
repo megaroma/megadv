@@ -1,6 +1,6 @@
 <?
 if (!defined('MEGADV')) die ('401 page not found');
-class modules_test_class_test1
+class module_test_test1
 {
 public $param;
 

@@ -9,10 +9,13 @@ include ("megadv/init.php");
 //init s_modules
 //$db = class_db::getInstance(conf::get("db_type"));
 //$error = class_error::getInstance();
+
 $out_data = new class_outdata();
+
 //$core = new class_core();
 core::load_mod("error");
 core::load_mod("db");
+
 
 //$error = $core->get("error");
 $out_data->set_js("jquery-1.7.2.min.js");
