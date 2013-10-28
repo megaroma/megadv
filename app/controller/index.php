@@ -21,10 +21,10 @@ public  function start()
 {}
 public  function main()
 {
-$data = core::get("out_data");
-$test = core::get("test");
-$db = core::get("db");
-$error = core::get("error");
+$data = core::out_data();
+$test = core::module("test");
+$db = core::module("db");
+$error = core::module("error");
 
 
 try
@@ -67,7 +67,7 @@ public  function end()
 public function test_ajax($in)
 
 {
-$data = core::get("out_data");
+$data = core::out_data();
 
 $data->set_block_vars("ajaxdata",array(
 'id' => 13,
@@ -90,8 +90,7 @@ exit;
 //тест пхп шаблонизатора
 public function test_php($in)
 {
-$data = core::get("out_data");
-
+$data = core::out_data();
 $data->set_var("mega","666");
 
 $data->set_block_vars("block",array(

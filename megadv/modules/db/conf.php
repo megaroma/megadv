@@ -5,6 +5,6 @@ return array (
 'db_login' => 'root',
 'db_pass' => '',
 'db_host' => 'localhost',
-'db_name' => 'megasys'
+'db_name' => 'megadv'
 );
 ?>

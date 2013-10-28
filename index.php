@@ -10,7 +10,7 @@ include ("megadv/init.php");
 //$db = class_db::getInstance(conf::get("db_type"));
 //$error = class_error::getInstance();
 
-$out_data = new class_outdata();
+//$out_data = new class_outdata();
 
 //$core = new class_core();
 core::load_mod("error");
@@ -18,7 +18,7 @@ core::load_mod("db");
 
 
 //$error = $core->get("error");
-$out_data->set_js("jquery-1.7.2.min.js");
+//$out_data->set_js("jquery-1.7.2.min.js");
 /*try
 {
  $db->sql_connect(conf::get("db_host"), conf::get("db_login"), conf::get("db_pass"), conf::get("db_name"));
@@ -40,20 +40,22 @@ $out_data->set_js("jquery-1.7.2.min.js");
 $core->reg('db',$db);
 */
 //$core->reg('error',$error);
-core::reg('out_data',$out_data);
+//core::reg('out_data',$out_data);
 core::load_mod("test");
 
 $route = $_GET["route"];
-$router = new class_router($route);
+$app = core::app();
+$app->run($route);
+//$router = new class_router($route);
 
-$controller = $router->get_controller();
+//$controller = $router->get_controller();
 
-$controller->run();
+//$controller->run();
 
 
-$view = new class_view();
+//$view = new class_view();
 
-$view->render($out_data);
+//$view->render(core::out_data());
 /*
 $t_typ = $out_data->get_typ();
 if ($t_typ == 'html')
